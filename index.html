@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Love Meter</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+	
+	<link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@900&display=swap" rel="stylesheet">
+	<style type="text/css">
+		.a{
+			background: white;
+			height: 50px;
+			font-size: 20px;
+			shape-outside: 5px;
+			border-radius: 25px;
+			text-align: center;
+			color: black;
+			font-weight: bold;
+			border:1px solid white;
+		}
+	</style></head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 offset-4" style="height: 100vh;background:  #e75480">
+				<section>
+				<div class="p-4 text-center">
+					<h3 style="color: pink;font-family: 'Chelsea Market', cursive;">LOVE CALCULATOR</h3>
+					<hr style="background: white">
+				</div>
+
+				</section>
+				<section class="text-center">
+					<form method="POST">
+						<p><input class="form-control a" type="text" id="n1" placeholder="Your name"></p>
+						<p><input class="form-control a" type="text" id="n2" placeholder="Your Crush Name"></p>
+						<p><button type="button" class="btn" onclick="calculate()"><img src="heart.jpg" style="width: 20%"></button></p>
+						
+						
+					</form>
+					<div><p class="display-4" style="color: white;font-weight: bold;" id="scorebtn" value="%"></p></div>	
+				</section>
+				<section class="text-center">
+					<div>
+						<p><a href="https://www.instagram.com/shaileshy007/" style="color: black">@fukat_kalakari</a><br>
+						<a href="https://www.instagram.com/fukat_kalakari/" style="color: black">@fukat_kalakari</a></p>
+						<h1 style="color: yellow;font-family: 'Titillium Web', sans-serif;">Fukat Kalakari</h1></div>
+				</section>		
+			</div>	
+		</div>
+	</div>
+	<script type="text/javascript">
+		calculate = () => {
+  			f1 = document.getElementById("n1").value;
+  			f2 = document.getElementById("n2").value;
+
+  			text = f1.toLowerCase()+'loves'+f2.toLowerCase();
+  		
+  			length = text.length
+  			numbers = [];
+  			
+  			checked=[]
+  			for(i=0;i<length;i++){
+  				
+  				done = true;
+  				score = 0
+
+  				if (i!=0) {
+  					for(x=0;x<checked.length;x++){
+  						if (text[i]==checked[x]) {
+  							done=false;
+  							
+  						}
+  					}
+  				}
+  				if (done) {
+  					for(j=i;j<text.length;j++){
+  						if (text[j]==text[i]) {
+  							score = score +1;
+  						}
+  					}
+  					checked.push(text[i]);
+  					
+  					numbers.push(score)
+  				}
+  			
+
+  			}
+
+  			//=========== add numbers=============
+ 
+  			function addnumber(number) {
+			num = number
+			newnumber = []
+
+			for(i=0;i<=((num.length/2)-1);i++){
+				sum = num[i]+num[num.length-(i+1)]
+				newnumber.push(sum)
+			}
+			
+			if ((num.length%2)!=0) {
+				newnumber.push(num[Math.floor(num.length/2)])
+			}
+			if(newnumber.length<=2){
+			
+				if(newnumber[0]>=10 || newnumber[1]>=10){
+					final = newnumber[0]+newnumber[1];
+					//return final
+				}else{
+					final = newnumber[0]+""+newnumber[1];
+					//return final
+
+				}
+			}else{
+				
+				addnumber(newnumber)
+			}
+			
+
+			
+		}
+
+		addnumber(numbers)
+			
+		document.getElementById("scorebtn").innerHTML= final+'%';
+
+		}
+	</script>
+</body>
+ 
+</html>
